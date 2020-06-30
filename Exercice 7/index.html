@@ -1,4 +1,4 @@
-<!-- Quand l'utilisateur essaye de mettre le souris sur le bouton "Click Me !", déplacer le bouton n'importe où ailleur sur la page de manière aléatoire. -->
+<!-- Quand l'utilisateur essaye de mettre la souris sur le bouton "Click Me !", déplacer le bouton n'importe où ailleur sur la page de manière aléatoire. -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,7 +25,18 @@
     <script>
         // Code JS à écrire ici
 
+        document.querySelector('#start').addEventListener('mouseenter', function(){
 
+            let newPositionLeft = Math.random() * 500;
+            let newPositionRight = Math.random() * 500;
+            let newPositionTop = Math.random() * 500;
+            let newPositionBottom = Math.random() * 500;
+
+            this.style.marginLeft = newPositionLeft + 'px' ;
+            this.style.marginRight = newPositionRight + 'px' ;
+            this.style.marginTop = newPositionTop + 'px' ;
+            this.style.marginBottom = newPositionBottom + 'px' ;
+        });
 
     </script>
 </body>
