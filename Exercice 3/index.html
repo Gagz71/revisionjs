@@ -29,22 +29,26 @@
 
         document.querySelector('button[data-color=red]').addEventListener('click', function(){
             
-            target.classList.toggle('red');
-        });  
+            target.classList.remove('blue', 'green', 'pink');
+            target.classList.add('red');
+        });   
 
         document.querySelector('button[data-color=blue]').addEventListener('click', function(){
             
-            target.classList.toggle('blue');
+            target.classList.remove('red', 'green', 'pink');
+            target.classList.add('blue');
         });
 
         document.querySelector('button[data-color=green]').addEventListener('click', function(){
             
-            target.classList.toggle('green');
+            target.classList.remove('blue', 'red', 'pink');
+            target.classList.add('green');
         });
 
         document.querySelector('button[data-color=pink]').addEventListener('click', function(){
             
-            target.classList.toggle('pink');
+            target.classList.remove('blue', 'green', 'red');
+            target.classList.add('pink');
         });
         
 
