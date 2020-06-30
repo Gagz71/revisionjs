@@ -43,6 +43,40 @@
     <script>
         // Code JS à écrire ici
 
+        let count = 0;
+
+        
+
+        //Si le bouton lancer est cliqué 
+        document.querySelector('#start').addEventListener('click', function(){
+
+            //Désactivation du bouton start en rajoutant l'attribut disabled
+            this.setAttribute("disabled", "");
+
+            //activation du bouton stop
+            document.querySelector('#stop').removeAttribute("disabled");
+
+            //Activation et affichage du compteur dans la div #counter-viewdu 
+            let loop = setInterval(function(){
+                document.querySelector('#counter-view').innerHTML = count++;
+            }, 200); 
+
+            
+            //Si le bouton stop est lancé
+            document.querySelector('#stop').addEventListener('click', function(){
+
+                //Désactivation du bouton stop en rajoutant l'attribut disabled
+                this.setAttribute("disabled", "");
+
+                //activation du bouton start
+                document.querySelector('#start').removeAttribute("disabled");
+
+                //Stop du compteur
+                clearInterval(loop);
+
+            });
+
+        });
 
 
     </script>
