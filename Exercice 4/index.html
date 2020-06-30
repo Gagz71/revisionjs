@@ -24,8 +24,8 @@
 <body>
     <h1>Titre h1 inutile néanmoins présent de la page</h1>
     <p><button id="start">Click Me !</button></p>
-    <main class="boxes">
-        <div class="box">
+    <main class="boxes"> 
+        <div class="box"> 
             <ul>
                 <li>Lorem ipsum dolor sit.</li>
                 <li>Necessitatibus incidunt libero voluptates.</li>
@@ -47,7 +47,7 @@
                 <li>Doloremque officiis expedita dicta.</li>
             </ul>
         </div>
-        <div class="box">
+        <div class="box"> 
             <ul>
                 <li>Accusamus consectetur pariatur ipsum.</li>
                 <li>Provident cumque enim velit.</li>
@@ -95,6 +95,11 @@
 
     <script>
         // Code JS à écrire ici
+        let target = document.querySelector('.boxes').firstElementChild.nextElementSibling.lastElementChild.children[5];
+
+        document.querySelector('#start').addEventListener('click', function(){
+            target.style.color = 'red';
+        });
 
 
 
