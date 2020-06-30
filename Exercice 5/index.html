@@ -1,4 +1,6 @@
-<!-- À chaque fois qu'une touche du clavier est appuyé dans le champ de texte, récupérer sa valeur et si cette dernière est bien un code couleur hexadecimal valide (regex), changer en temps réel la couleur de fond de la page (body). -->
+<!-- À chaque fois qu'une touche du clavier est appuyé dans le champ de texte, récupérer sa valeur et si cette dernière est bien un code couleur hexadecimal valide (regex), changer en temps réel la couleur de fond de la page (body). 
+    changer couleur que si code couleur complet 
+-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,9 +32,19 @@
 
     <script>
         // Code JS à écrire ici
+        let target = document.querySelector('body');
 
+        document.querySelector('#color-field').addEventListener("keyup", function() {
 
+            let newBackground = document.querySelector('#color-field').value;
+
+            if(newBackground.match(/^[A-Fa-f0-9]{6}$/)){
+                target.style.backgroundColor = '#' + newBackground;
+            }
+
+        });
 
     </script>
 </body>
 </html>
+
