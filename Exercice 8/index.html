@@ -29,11 +29,74 @@
     <button id="start">Click Me !</button>
     <div id="view"></div>
 
+    
+
     <script>
         // Code JS à écrire ici
 
+        //Création fonction affichage overlay
+        function setOverlay(){
+            //Création <div class="overlay"></div>
+            let overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.querySelector('body').prepend(overlay);
+
+            //Création image de l'overlay
+            let overlayImg = document.createElement('img');
+            overlayImg.src = 'ajax-loader.svg';
+            overlay.append(overlayImg);
+        }
+
+        //Création fonction suppression overlay
+        function removeOverlay(){
+
+            let overlay = document.querySelector('.overlay');
+
+            overlay.parentElement.removeChild(overlay);
+        }
+
+        //Quand le bouton est cliqué
+        document.querySelector('#start').addEventListener('click', function(){
+            //View vide pour eviter que les images s'affichent les unes sur les autres 
+            document.querySelector('#view').innerHTML = '';
+            //Mise en place de l'overlay
+            setOverlay();
+            //Création d'une nouvelle requête Ajax
+            let xhr = new XMLHttpRequest();
+
+            //Paramétrage du verbe et de l'adresse de la requête
+            xhr.open('GET', 'https://api.thecatapi.com/v1/images/search?size=full');
+
+            //Envoi de la requête
+            xhr.send(null);
+
+            //Au retour de la requête
+            xhr.addEventListener('readystatechange', function(){
+                //Vérification du serveur trouvé
+                if(xhr.readyState === XMLHttpRequest.DONE){
+                    //Vérification code 200 de la requête
+                    if(xhr.status === 200){
+
+                        removeOverlay();
+
+                        let data = JSON.parse(xhr.response);
+
+                        let newImg = document.createElement('img');
+                        newImg.src = data[0].url;
+                        
+                        document.querySelector('#view').prepend(newImg);
+
+                    } else{
+                        document.querySelector('#view').textContent = 'Problème avec le serveur';
+                    }
+                }
+            });
+        });
 
 
+    
     </script>
 </body>
 </html>
+
+
